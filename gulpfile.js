@@ -19,7 +19,7 @@ let gulp = require('gulp'),
 // Создание функции с именем sass  конвертирующая SCSS в CSS
 gulp.task('sass',function(){
     // Адрес до SCSS который нужно изменить
-  return gulp.src('app/scss/style.scss')
+  return gulp.src('app/scss/**/*.scss')
     //обработка(трубы) через который проходит файл  
         // файл помещается в трубу для обработки
         // активирует конвертацию файла со значением: outputStyle: 'compressed', что значит кода будет минифицирован
@@ -82,6 +82,7 @@ gulp.task('js', function(){
     return gulp.src('app/js/*.js')
     .pipe(browserSync.reload({stream: true}))
 });
+
 // 
 
 //  Подключения плагина для автообновления страницы
@@ -98,7 +99,7 @@ gulp.task('browser-sync', function () {
 
 // Задание для автообновления проета и других заданий
 gulp.task('watch', function(){
-  gulp.watch('app/scss/style.scss', gulp.parallel('sass'))
+  gulp.watch('app/scss/**/*.scss', gulp.parallel('sass'))
   gulp.watch('app/*.html', gulp.parallel('html'))
   gulp.watch('app/js/*.js', gulp.parallel('js'))
 });
